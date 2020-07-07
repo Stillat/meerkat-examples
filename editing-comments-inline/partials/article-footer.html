@@ -1,0 +1,68 @@
+<section class="regular">
+    {{ meerkat:create }}
+
+    {{ fields }}
+    <div class="form-group">
+        <label>{{ display }}</label>
+        <input type="text" name="{{ field }}" value="{{ old }}" class="form-control"/>
+    </div>
+    {{ /fields }}
+
+    <input type="submit" value="Submit your comment!">
+    {{ /meerkat:create }}
+
+    {{ meerkat:responses }}
+    <div class="media">
+        <div class="media-body">
+            <h4 class="media-heading">{{ name }}</h4>
+            <div data-meerkat-comment="{{ id }}">
+                {{ comment }}
+            </div>
+
+            <!--
+                If the comment is owned by the currently authenticated
+                Statamic user, we will output an Edit Comment button
+                that they can use to edit their comment in-line.
+
+                The data attributes are all used by the JavaScript
+                to determine which comment is being edited,
+                as well as get it's original markdown.
+            -->
+            {{ if authenticated_user_owns_comment }}
+                <a href="#" data-meerkat-comment-form="edit" data-meerkat-comment-id="{{ id }}" data-meerkat-original-content='{{ comment_markdown | to_json }}'>Edit Comment</a>
+            {{ /if }}
+        </div>
+    </div>
+    {{ /meerkat:responses }}
+
+    <!--
+        A simple "Edit Comment" template that will be injected into the page
+        whenever an authenticated user clicks the "Edit Comment" next
+        to one of their comments. The interactions and state can be
+        found in the "meerkat-edit-form.js" JavaScript file :)
+    -->
+    <script type="text/html" id="meerkatEditFormTemplate">
+        <div style="margin-bottom: 20px;">
+            <div class="alert alert-warning" data-meerkat-edit="error">
+            </div>
+
+            <textarea data-meerkat-edit="content" class="form-control" row="3" style="margin-bottom: 10px;"></textarea>
+
+            <span data-meerkat-edit="updating">Updating Comment. One Moment Please...</span>
+            <a href="#" data-meerkat-edit="submit" class="btn btn-primary">Save Changes</a> <a href="#" data-meerkat-edit="cancel" class="btn btn-default">Cancel</a>
+        </div>
+    </script>
+</section>
+
+{{ collection:next in="blog" limit="2" as="next_posts" }}
+{{ unless no_results }}
+<footer class="list article-footer">
+    <div class="regular">
+        <h6>Next Up <em>on the</em> Blog</h6>
+        {{ next_posts scope="tag" }}
+        {{ partial:block }}
+        {{ /next_posts }}
+    </div>
+</footer>
+{{ /unless }}
+{{ /collection:next }}
