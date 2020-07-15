@@ -6,7 +6,7 @@ A place for examples on how to accomplish some cool things with Meerkat.
 
 ### `editing-comments-inline`
 
-**Important: This version requires Meerkat v1.5.82 for the latest Statamic 2 version**
+**Important: This example requires Meerkat v1.5.82 for the latest Statamic 2 version**
 
 Demonstrates how to allow authenticated Statamic users to edit their comments from your site's theme. Users will only be able to edit their own comments with this example.
 
