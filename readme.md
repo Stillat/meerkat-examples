@@ -4,6 +4,10 @@ A place for examples on how to accomplish some cool things with Meerkat.
 
 ## Current Examples
 
+### `custom-spam-guard`
+
+An example Statamic 2 and Meerkat addon that demonstrates how to add a new Spam Detector to Meerkat's Spam Guard.
+
 ### `editing-comments-inline`
 
 **Important: This example requires Meerkat v1.5.82 for the latest Statamic 2 version**

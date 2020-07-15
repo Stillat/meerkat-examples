@@ -1,0 +1,6 @@
+name: MeerkatCustomSpamGuard
+version: '1.0'
+description: 'Example of creating, and registering a Meerkat Spam Guard.'
+url: 'https://stillat.com/meerkat'
+developer: 'Johnathon Koster'
+developer_url: 'https://stillat.com/'
