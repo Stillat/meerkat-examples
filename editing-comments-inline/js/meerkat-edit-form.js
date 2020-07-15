@@ -13,7 +13,7 @@
     $(document).ready(function () {
         $('[data-meerkat-comment-form="edit"]').on('click', function (e) {
             var commentId = $(this).data('meerkat-comment-id');
-            var originalContent = JSON.parse($(this).data('meerkat-original-content'));
+            var originalContent = decodeURIComponent($(this).data('meerkat-original-content'));
 
             // Get the content container for this comment.
             var commentContainer = $('[data-meerkat-comment="' + commentId + '"]')[0];

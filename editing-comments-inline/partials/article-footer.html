@@ -29,7 +29,7 @@
                 as well as get it's original markdown.
             -->
             {{ if authenticated_user_owns_comment }}
-                <a href="#" data-meerkat-comment-form="edit" data-meerkat-comment-id="{{ id }}" data-meerkat-original-content='{{ comment_markdown | to_json }}'>Edit Comment</a>
+                <a href="#" data-meerkat-comment-form="edit" data-meerkat-comment-id="{{ id }}" data-meerkat-original-content='{{ comment_markdown | rawurlencode }}'>Edit Comment</a>
             {{ /if }}
         </div>
     </div>
